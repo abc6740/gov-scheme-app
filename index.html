@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gov Scheme Finder</title>
+</head>
+<body>
+
+  <h2>Government Scheme Finder</h2>
+
+  <label>Name:</label>
+  <input type="text" id="name"><br><br>
+
+  <label>Age:</label>
+  <input type="number" id="age"><br><br>
+
+  <button onclick="findSchemes()">Find Schemes</button>
+
+  <h3>Eligible Schemes:</h3>
+  <ul id="result"></ul>
+
+  <script>
+    async function findSchemes() {
+      const age = document.getElementById("age").value;
+
+      const response = await fetch("schemes.json");
+      const schemes = await response.json();
+
+      const resultList = document.getElementById("result");
+      resultList.innerHTML = "";
+
+      schemes.forEach(scheme => {
+        if (age >= scheme.min_age && age <= scheme.max_age) {
+          const li = document.createElement("li");
+          li.textContent = scheme.scheme_name;
+          resultList.appendChild(li);
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
