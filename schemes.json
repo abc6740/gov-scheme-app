@@ -1,0 +1,17 @@
+[
+  {
+    "scheme_name": "Old Age Pension",
+    "min_age": 60,
+    "max_age": 120
+  },
+  {
+    "scheme_name": "PM Rozgar Yojana",
+    "min_age": 18,
+    "max_age": 35
+  },
+  {
+    "scheme_name": "Student Scholarship",
+    "min_age": 5,
+    "max_age": 25
+  }
+]
