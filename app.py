@@ -5,12 +5,12 @@ import os
 
 app = Flask(__name__)
 CORS(app)
+
 @app.route('/')
 def index():
     return jsonify({"status": "FAWP backend is running!"})
 
 DB_PATH = os.path.join(os.path.dirname(__file__), "fawp.db")
-
 
 # ──────────────────────────────────────────────
 # DB helper
@@ -20,18 +20,16 @@ def get_db():
     conn.row_factory = sqlite3.Row
     return conn
 
-
 def query(sql, params=()):
     with get_db() as conn:
         rows = conn.execute(sql, params).fetchall()
     return [dict(r) for r in rows]
 
-
 def execute(sql, params=()):
     with get_db() as conn:
         cur = conn.execute(sql, params)
         conn.commit()
-        return cur.lastrowid
+    return cur.lastrowid
 
 
 # ──────────────────────────────────────────────
