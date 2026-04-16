@@ -1,3 +1,5 @@
-fetch('http://127.0.0.1:5000/api/match/1')
+const API_BASE = 'http://127.0.0.1:5000'; // change this after deployment
+
+fetch(`${API_BASE}/api/match/1`)
   .then(res => res.json())
-  .then(data => { /* display results */ });
+  .then(data => { console.log(data); });
